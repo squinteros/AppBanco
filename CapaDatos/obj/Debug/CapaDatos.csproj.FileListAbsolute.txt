@@ -1,0 +1,12 @@
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaDatos\bin\Debug\CapaDatos.dll.config
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaDatos\bin\Debug\CapaEntidad.dll
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaDatos\bin\Debug\EntityFramework.dll
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaDatos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaDatos\bin\Debug\CapaEntidad.pdb
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaDatos\bin\Debug\EntityFramework.xml
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaDatos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaDatos\obj\Debug\CapaDatos.csprojResolveAssemblyReference.cache
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaDatos\obj\Debug\CapaDatos.pdb

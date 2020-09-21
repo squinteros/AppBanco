@@ -1,0 +1,11 @@
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaNegocio\bin\Debug\CapaNegocio.dll
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaNegocio\bin\Debug\CapaNegocio.pdb
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaNegocio\bin\Debug\CapaDatos.dll
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaNegocio\bin\Debug\CapaEntidad.dll
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaNegocio\bin\Debug\EntityFramework.dll
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaNegocio\bin\Debug\CapaDatos.pdb
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaNegocio\bin\Debug\CapaEntidad.pdb
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaNegocio\bin\Debug\EntityFramework.xml
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaNegocio\obj\Debug\CapaNegocio.csprojResolveAssemblyReference.cache
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaNegocio\obj\Debug\CapaNegocio.dll
+C:\Users\seba\Documents\Visual Studio 2013\Projects\Banco\CapaNegocio\obj\Debug\CapaNegocio.pdb

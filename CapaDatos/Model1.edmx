@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProyectoBancoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="int" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="APEPAT" Type="varchar" MaxLength="50" />
+          <Property Name="APEMAT" Type="varchar" MaxLength="50" />
+          <Property Name="RUT" Type="varchar" MaxLength="12" />
+          <Property Name="F_NAC" Type="date" />
+          <Property Name="TELEFONO" Type="int" />
+          <Property Name="D_PART" Type="varchar" MaxLength="50" />
+          <Property Name="D_LAB" Type="varchar" MaxLength="50" />
+          <Property Name="SUELDO" Type="int" />
+        </EntityType>
+        <EntityType Name="CREDITO">
+          <Key>
+            <PropertyRef Name="ID_CREDITO" />
+          </Key>
+          <Property Name="ID_CREDITO" Type="int" Nullable="false" />
+          <Property Name="LLAVE_CREDITO" Type="varchar" MaxLength="50" />
+          <Property Name="ID_CLIENTE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FUNCIONARIO">
+          <Key>
+            <PropertyRef Name="ID_FUNCIONARIO" />
+          </Key>
+          <Property Name="ID_FUNCIONARIO" Type="int" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="APEPAT" Type="varchar" MaxLength="50" />
+          <Property Name="APEMAT" Type="varchar" MaxLength="50" />
+          <Property Name="RUT" Type="varchar" MaxLength="12" />
+          <Property Name="F_NAC" Type="date" />
+          <Property Name="TELEFONO" Type="int" />
+          <Property Name="TIPO" Type="varchar" MaxLength="50" />
+          <Property Name="ID_LOG" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INGRESO_LOGIN">
+          <Key>
+            <PropertyRef Name="ID_LOG" />
+          </Key>
+          <Property Name="ID_LOG" Type="int" Nullable="false" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="50" />
+          <Property Name="PASS" Type="varchar" MaxLength="50" />
+          <Property Name="TIPO" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_CLIENTE_CREDITO">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="CREDITO" Type="Self.CREDITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="CREDITO">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOGIN_FUNCIONARIO">
+          <End Role="INGRESO_LOGIN" Type="Self.INGRESO_LOGIN" Multiplicity="1" />
+          <End Role="FUNCIONARIO" Type="Self.FUNCIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INGRESO_LOGIN">
+              <PropertyRef Name="ID_LOG" />
+            </Principal>
+            <Dependent Role="FUNCIONARIO">
+              <PropertyRef Name="ID_LOG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoBancoModelStoreContainer">
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CREDITO" EntityType="Self.CREDITO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FUNCIONARIO" EntityType="Self.FUNCIONARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INGRESO_LOGIN" EntityType="Self.INGRESO_LOGIN" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CLIENTE_CREDITO" Association="Self.FK_CLIENTE_CREDITO">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="CREDITO" EntitySet="CREDITO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOGIN_FUNCIONARIO" Association="Self.FK_LOGIN_FUNCIONARIO">
+            <End Role="INGRESO_LOGIN" EntitySet="INGRESO_LOGIN" />
+            <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoBancoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="APEPAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="APEMAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RUT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="F_NAC" Type="DateTime" Precision="0" />
+          <Property Name="TELEFONO" Type="Int32" />
+          <Property Name="D_PART" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="D_LAB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SUELDO" Type="Int32" />
+          <NavigationProperty Name="CREDITO" Relationship="Self.FK_CLIENTE_CREDITO" FromRole="CLIENTE" ToRole="CREDITO" />
+        </EntityType>
+        <EntityType Name="CREDITO">
+          <Key>
+            <PropertyRef Name="ID_CREDITO" />
+          </Key>
+          <Property Name="ID_CREDITO" Type="Int32" Nullable="false" />
+          <Property Name="LLAVE_CREDITO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_CLIENTE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.FK_CLIENTE_CREDITO" FromRole="CREDITO" ToRole="CLIENTE" />
+        </EntityType>
+        <EntityType Name="FUNCIONARIO">
+          <Key>
+            <PropertyRef Name="ID_FUNCIONARIO" />
+          </Key>
+          <Property Name="ID_FUNCIONARIO" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="APEPAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="APEMAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RUT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="F_NAC" Type="DateTime" Precision="0" />
+          <Property Name="TELEFONO" Type="Int32" />
+          <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_LOG" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="INGRESO_LOGIN" Relationship="Self.FK_LOGIN_FUNCIONARIO" FromRole="FUNCIONARIO" ToRole="INGRESO_LOGIN" />
+        </EntityType>
+        <EntityType Name="INGRESO_LOGIN">
+          <Key>
+            <PropertyRef Name="ID_LOG" />
+          </Key>
+          <Property Name="ID_LOG" Type="Int32" Nullable="false" />
+          <Property Name="USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PASS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FUNCIONARIO" Relationship="Self.FK_LOGIN_FUNCIONARIO" FromRole="INGRESO_LOGIN" ToRole="FUNCIONARIO" />
+        </EntityType>
+        <Association Name="FK_CLIENTE_CREDITO">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="CREDITO" Type="Self.CREDITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="CREDITO">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOGIN_FUNCIONARIO">
+          <End Role="INGRESO_LOGIN" Type="Self.INGRESO_LOGIN" Multiplicity="1" />
+          <End Role="FUNCIONARIO" Type="Self.FUNCIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INGRESO_LOGIN">
+              <PropertyRef Name="ID_LOG" />
+            </Principal>
+            <Dependent Role="FUNCIONARIO">
+              <PropertyRef Name="ID_LOG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoBancoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
+          <EntitySet Name="CREDITO" EntityType="Self.CREDITO" />
+          <EntitySet Name="FUNCIONARIO" EntityType="Self.FUNCIONARIO" />
+          <EntitySet Name="INGRESO_LOGIN" EntityType="Self.INGRESO_LOGIN" />
+          <AssociationSet Name="FK_CLIENTE_CREDITO" Association="Self.FK_CLIENTE_CREDITO">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="CREDITO" EntitySet="CREDITO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOGIN_FUNCIONARIO" Association="Self.FK_LOGIN_FUNCIONARIO">
+            <End Role="INGRESO_LOGIN" EntitySet="INGRESO_LOGIN" />
+            <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoBancoModelStoreContainer" CdmEntityContainer="ProyectoBancoEntities">
+          <EntitySetMapping Name="CLIENTE">
+            <EntityTypeMapping TypeName="ProyectoBancoModel.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APEPAT" ColumnName="APEPAT" />
+                <ScalarProperty Name="APEMAT" ColumnName="APEMAT" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="F_NAC" ColumnName="F_NAC" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="D_PART" ColumnName="D_PART" />
+                <ScalarProperty Name="D_LAB" ColumnName="D_LAB" />
+                <ScalarProperty Name="SUELDO" ColumnName="SUELDO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CREDITO">
+            <EntityTypeMapping TypeName="ProyectoBancoModel.CREDITO">
+              <MappingFragment StoreEntitySet="CREDITO">
+                <ScalarProperty Name="ID_CREDITO" ColumnName="ID_CREDITO" />
+                <ScalarProperty Name="LLAVE_CREDITO" ColumnName="LLAVE_CREDITO" />
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FUNCIONARIO">
+            <EntityTypeMapping TypeName="ProyectoBancoModel.FUNCIONARIO">
+              <MappingFragment StoreEntitySet="FUNCIONARIO">
+                <ScalarProperty Name="ID_FUNCIONARIO" ColumnName="ID_FUNCIONARIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APEPAT" ColumnName="APEPAT" />
+                <ScalarProperty Name="APEMAT" ColumnName="APEMAT" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="F_NAC" ColumnName="F_NAC" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="ID_LOG" ColumnName="ID_LOG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INGRESO_LOGIN">
+            <EntityTypeMapping TypeName="ProyectoBancoModel.INGRESO_LOGIN">
+              <MappingFragment StoreEntitySet="INGRESO_LOGIN">
+                <ScalarProperty Name="ID_LOG" ColumnName="ID_LOG" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="PASS" ColumnName="PASS" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

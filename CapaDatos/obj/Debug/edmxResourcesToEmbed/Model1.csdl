@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProyectoBancoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="ID_CLIENTE" />
+    </Key>
+    <Property Name="ID_CLIENTE" Type="Int32" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="APEPAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="APEMAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RUT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="F_NAC" Type="DateTime" Precision="0" />
+    <Property Name="TELEFONO" Type="Int32" />
+    <Property Name="D_PART" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="D_LAB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SUELDO" Type="Int32" />
+    <NavigationProperty Name="CREDITO" Relationship="Self.FK_CLIENTE_CREDITO" FromRole="CLIENTE" ToRole="CREDITO" />
+  </EntityType>
+  <EntityType Name="CREDITO">
+    <Key>
+      <PropertyRef Name="ID_CREDITO" />
+    </Key>
+    <Property Name="ID_CREDITO" Type="Int32" Nullable="false" />
+    <Property Name="LLAVE_CREDITO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID_CLIENTE" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CLIENTE" Relationship="Self.FK_CLIENTE_CREDITO" FromRole="CREDITO" ToRole="CLIENTE" />
+  </EntityType>
+  <EntityType Name="FUNCIONARIO">
+    <Key>
+      <PropertyRef Name="ID_FUNCIONARIO" />
+    </Key>
+    <Property Name="ID_FUNCIONARIO" Type="Int32" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="APEPAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="APEMAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RUT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="F_NAC" Type="DateTime" Precision="0" />
+    <Property Name="TELEFONO" Type="Int32" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID_LOG" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="INGRESO_LOGIN" Relationship="Self.FK_LOGIN_FUNCIONARIO" FromRole="FUNCIONARIO" ToRole="INGRESO_LOGIN" />
+  </EntityType>
+  <EntityType Name="INGRESO_LOGIN">
+    <Key>
+      <PropertyRef Name="ID_LOG" />
+    </Key>
+    <Property Name="ID_LOG" Type="Int32" Nullable="false" />
+    <Property Name="USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PASS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="FUNCIONARIO" Relationship="Self.FK_LOGIN_FUNCIONARIO" FromRole="INGRESO_LOGIN" ToRole="FUNCIONARIO" />
+  </EntityType>
+  <Association Name="FK_CLIENTE_CREDITO">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+    <End Role="CREDITO" Type="Self.CREDITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Principal>
+      <Dependent Role="CREDITO">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOGIN_FUNCIONARIO">
+    <End Role="INGRESO_LOGIN" Type="Self.INGRESO_LOGIN" Multiplicity="1" />
+    <End Role="FUNCIONARIO" Type="Self.FUNCIONARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INGRESO_LOGIN">
+        <PropertyRef Name="ID_LOG" />
+      </Principal>
+      <Dependent Role="FUNCIONARIO">
+        <PropertyRef Name="ID_LOG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProyectoBancoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
+    <EntitySet Name="CREDITO" EntityType="Self.CREDITO" />
+    <EntitySet Name="FUNCIONARIO" EntityType="Self.FUNCIONARIO" />
+    <EntitySet Name="INGRESO_LOGIN" EntityType="Self.INGRESO_LOGIN" />
+    <AssociationSet Name="FK_CLIENTE_CREDITO" Association="Self.FK_CLIENTE_CREDITO">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="CREDITO" EntitySet="CREDITO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOGIN_FUNCIONARIO" Association="Self.FK_LOGIN_FUNCIONARIO">
+      <End Role="INGRESO_LOGIN" EntitySet="INGRESO_LOGIN" />
+      <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

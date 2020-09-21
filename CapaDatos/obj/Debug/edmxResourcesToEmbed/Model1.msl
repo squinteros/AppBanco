@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProyectoBancoModelStoreContainer" CdmEntityContainer="ProyectoBancoEntities">
+    <EntitySetMapping Name="CLIENTE">
+      <EntityTypeMapping TypeName="ProyectoBancoModel.CLIENTE">
+        <MappingFragment StoreEntitySet="CLIENTE">
+          <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APEPAT" ColumnName="APEPAT" />
+          <ScalarProperty Name="APEMAT" ColumnName="APEMAT" />
+          <ScalarProperty Name="RUT" ColumnName="RUT" />
+          <ScalarProperty Name="F_NAC" ColumnName="F_NAC" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="D_PART" ColumnName="D_PART" />
+          <ScalarProperty Name="D_LAB" ColumnName="D_LAB" />
+          <ScalarProperty Name="SUELDO" ColumnName="SUELDO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CREDITO">
+      <EntityTypeMapping TypeName="ProyectoBancoModel.CREDITO">
+        <MappingFragment StoreEntitySet="CREDITO">
+          <ScalarProperty Name="ID_CREDITO" ColumnName="ID_CREDITO" />
+          <ScalarProperty Name="LLAVE_CREDITO" ColumnName="LLAVE_CREDITO" />
+          <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FUNCIONARIO">
+      <EntityTypeMapping TypeName="ProyectoBancoModel.FUNCIONARIO">
+        <MappingFragment StoreEntitySet="FUNCIONARIO">
+          <ScalarProperty Name="ID_FUNCIONARIO" ColumnName="ID_FUNCIONARIO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APEPAT" ColumnName="APEPAT" />
+          <ScalarProperty Name="APEMAT" ColumnName="APEMAT" />
+          <ScalarProperty Name="RUT" ColumnName="RUT" />
+          <ScalarProperty Name="F_NAC" ColumnName="F_NAC" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="ID_LOG" ColumnName="ID_LOG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INGRESO_LOGIN">
+      <EntityTypeMapping TypeName="ProyectoBancoModel.INGRESO_LOGIN">
+        <MappingFragment StoreEntitySet="INGRESO_LOGIN">
+          <ScalarProperty Name="ID_LOG" ColumnName="ID_LOG" />
+          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+          <ScalarProperty Name="PASS" ColumnName="PASS" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

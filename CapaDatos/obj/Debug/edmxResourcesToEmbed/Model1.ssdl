@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProyectoBancoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="ID_CLIENTE" />
+    </Key>
+    <Property Name="ID_CLIENTE" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="APEPAT" Type="varchar" MaxLength="50" />
+    <Property Name="APEMAT" Type="varchar" MaxLength="50" />
+    <Property Name="RUT" Type="varchar" MaxLength="12" />
+    <Property Name="F_NAC" Type="date" />
+    <Property Name="TELEFONO" Type="int" />
+    <Property Name="D_PART" Type="varchar" MaxLength="50" />
+    <Property Name="D_LAB" Type="varchar" MaxLength="50" />
+    <Property Name="SUELDO" Type="int" />
+  </EntityType>
+  <EntityType Name="CREDITO">
+    <Key>
+      <PropertyRef Name="ID_CREDITO" />
+    </Key>
+    <Property Name="ID_CREDITO" Type="int" Nullable="false" />
+    <Property Name="LLAVE_CREDITO" Type="varchar" MaxLength="50" />
+    <Property Name="ID_CLIENTE" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FUNCIONARIO">
+    <Key>
+      <PropertyRef Name="ID_FUNCIONARIO" />
+    </Key>
+    <Property Name="ID_FUNCIONARIO" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="APEPAT" Type="varchar" MaxLength="50" />
+    <Property Name="APEMAT" Type="varchar" MaxLength="50" />
+    <Property Name="RUT" Type="varchar" MaxLength="12" />
+    <Property Name="F_NAC" Type="date" />
+    <Property Name="TELEFONO" Type="int" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" />
+    <Property Name="ID_LOG" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="INGRESO_LOGIN">
+    <Key>
+      <PropertyRef Name="ID_LOG" />
+    </Key>
+    <Property Name="ID_LOG" Type="int" Nullable="false" />
+    <Property Name="USUARIO" Type="varchar" MaxLength="50" />
+    <Property Name="PASS" Type="varchar" MaxLength="50" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_CLIENTE_CREDITO">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+    <End Role="CREDITO" Type="Self.CREDITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Principal>
+      <Dependent Role="CREDITO">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOGIN_FUNCIONARIO">
+    <End Role="INGRESO_LOGIN" Type="Self.INGRESO_LOGIN" Multiplicity="1" />
+    <End Role="FUNCIONARIO" Type="Self.FUNCIONARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INGRESO_LOGIN">
+        <PropertyRef Name="ID_LOG" />
+      </Principal>
+      <Dependent Role="FUNCIONARIO">
+        <PropertyRef Name="ID_LOG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProyectoBancoModelStoreContainer">
+    <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CREDITO" EntityType="Self.CREDITO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FUNCIONARIO" EntityType="Self.FUNCIONARIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="INGRESO_LOGIN" EntityType="Self.INGRESO_LOGIN" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CLIENTE_CREDITO" Association="Self.FK_CLIENTE_CREDITO">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="CREDITO" EntitySet="CREDITO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOGIN_FUNCIONARIO" Association="Self.FK_LOGIN_FUNCIONARIO">
+      <End Role="INGRESO_LOGIN" EntitySet="INGRESO_LOGIN" />
+      <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
